@@ -1,0 +1,74 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">招标通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php">主页</a> <span class="divider">/</span></li>
+            <li class="active">招标通知</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>项目编号</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>状态</th>
+          <th>负责人</th>
+          <th>发布时间</th>
+          <th style="width: 26px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<volist name="list" id="tenders">
+        	<tr>
+              <td><{$tenders.sn}></td>
+              <td><{$tenders.pname}></td>
+              <td><{$tenders.type|getTypes}></td>
+              <td><{$tenders.status|getStatus}></td>
+              <td><{$tenders.principal|getNickname}></td>
+              <td><{$tenders.pubdate|date="Y-m-d",###}></td>
+              <td>
+                  <a href="__APP__/Project/resume/pid/<{$tenders.pid}>"><i class="icon-unlock"></i></a>
+              </td>
+            </tr>
+        </volist>
+        
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <{$page}>
+</div>
+
+
+                    
+            </div>
+        </div>
+        
+</block>
+
+<block name="footer"></block>
+
+    
+
+
+
+    

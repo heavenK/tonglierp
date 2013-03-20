@@ -1,0 +1,171 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">添加通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="index.html">主页</a> <span class="divider">/</span></li>
+            <li><a href="zhaobiao_mes.html">造价项目</a> <span class="divider">/</span></li>
+            <li class="active">编辑项目</li>
+        </ul>
+<form method='post' name="login" id="form1" ACTION="__URL__/many_update" enctype="multipart/form-data">    
+        <div class="container-fluid">
+            <div class="row-fluid">
+		<?php if($type == 5) {?>
+		<div class="block">
+                <p class="block-heading">注意事项</p>
+                <div class="block-body">
+                    <h2>审核的主要内容：</h2>
+                    <table>
+                    	<tr>
+                        	<td>1、成果文件格式，内容前后是否呼应；</td>
+                            <td>2、报告内容如项目名称、数值等是否核对正确；</td>
+                        </tr>
+                        <tr>
+                        	<td>3、是否针对特殊项目制定特殊条款； </td>
+                            <td>4、是否按合同、招投标文件及相关审核文件来审核；</td>
+                        </tr>
+                        <tr>
+                        	<td>5、审核依据是否充分；</td>
+                            <td>6、工程量是否准确、主要材料单价是否合理；</td>
+                        </tr>
+                        <tr>
+                        	<td>7、签证单是否符合要求</td>
+                            <td>8、规费及相关其它费用是否按现行文件执行；</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <?php }else {?>  
+        <div class="block">
+                <p class="block-heading">注意事项</p>
+                <div class="block-body">
+                    <h2>审核的主要内容：</h2>
+                    <table>
+                    	<tr>
+                        	<td>1、成果文件格式，内容前后是否呼应；</td>
+                            <td>2、项目名称、编制说明等是否核对正确；</td>
+                        </tr>
+                        <tr>
+                        	<td>3、是否按照委托方要求编制成果文件； </td>
+                            <td>4、是否针对特殊项目制定特殊条款；</td>
+                        </tr>
+                        <tr>
+                        	<td>5、工程量清单是否依据《建设工程工程量清单计价规范》（GB50500-2008）编制；</td>
+                            <td>6、工程量清单编制是否完整，荐、量套的是否正确，主材的标准是否明确具体，是否将措施费、规费等费用单独列出；</td>
+                        </tr>
+                        <tr>
+                        	<td>7、主要材料单价是否合理；</td>
+                            <td>8、规费及相关其它费用是否按现行文件执行；</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+          <?php }?>
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+      <li><a href="#profile" data-toggle="tab">专业分工内容</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <input type="hidden" name="pid" value="<{$vo.pid}>" class="input-xlarge">
+        <label>项目编号</label>
+        <input type="text" name="sn" value="<{$vo.sn}>" class="input-xlarge">
+        <label>项目名称</label>
+        <input type="text" name="pname" value="<{$vo.pname}>" class="input-xlarge">
+        <label>委托方</label>
+        <input type="text" name="cost[client]" value="<{$vo.cost.client}>" class="input-xlarge">
+        <label>委托时间</label>
+        <input name="cost[delegateTime]" class="Wdate input-xlarge" value="<{$vo.cost.delegateTime}>" type="text"  onClick="WdatePicker()"/>
+        <label>项目负责人</label>
+        <select name="principal" id="DropDownTimezone" class="input-xlarge">
+        	<option value="<{$vo.principal}>"><{$vo.principal|getNickname}></option>
+        	<{:getAllUser()}>
+   		</select>
+        <label>项目组成员</label>
+        <select name="cost[proMembers]" id="DropDownTimezone" class="input-xlarge">
+        	<option value="<{$vo.cost.proMembers}>"><{$vo.cost.proMembers|getNickname}></option>
+          	<{:getAllUser()}>
+   		</select>
+    	<label>特殊情况说明</label>
+        <textarea name="cost[info]" rows="3" class="input-xlarge" style="width:400px;"><{$vo.cost.info}></textarea>
+        <label>附件</label>
+   		<?php if($vo['attachment']) {?><a href="__UPLOAD__<{$vo.attachment}>">点击下载</a><?php }?><input name="attachment" type="file" class="input-xlarge"/>
+      </div>
+      <div class="tab-pane fade" id="profile">
+      	<input id="sub_id" type="hidden" value="<{$sum}>">
+      	<?php if($type == 5) {?>
+        <table class="cost_subitem_s">
+        	<tr>
+            	<th>序号</th>
+            	<th>专业</th>
+                <th>送审额</th>
+                <th>审定额</th>
+                <th>审减额</th>
+            </tr>
+            <volist name="vo_sub" id="item">
+            	<tr>
+                	<input type="hidden" name="cost_subitem[<{$i}>][pid]" value="<{$item.pid}>">
+                    <td><{$i}></td>
+                    <td><input type="text" name="cost_subitem[<{$i}>][pname]" value="<{$item.pname}>" class="input-xlarge"></td>
+                    <td><input type="text" name="cost_subitem[<{$i}>][submitMoney]" value="<{$item.cost_subitem.submitMoney}>" class="input-xlarge"></td>
+                    <td><input type="text" name="cost_subitem[<{$i}>][judgeMoney]" value="<{$item.cost_subitem.judgeMoney}>" class="input-xlarge"></td>
+                    <td><input type="text" name="cost_subitem[<{$i}>][reduceMoney]" value="<{$item.cost_subitem.reduceMoney}>" class="input-xlarge"></td>
+                </tr>
+            </volist>
+        </table>
+        <label><input type="button" onclick="add_subitem(1);" value="增加一项"  /></label>
+        <?php }else {?>  
+        <table class="cost_subitem_s">
+        	<tr>
+            	<th>专业</th>
+            </tr>
+            <volist name="vo_sub" id="item">
+            	<tr>
+                    <input type="hidden" name="cost_subitem[<{$i}>][pid]" value="<{$item.pid}>" class="input-xlarge">
+                    <td><{$i}></td>
+                    <td><input type="text" name="cost_subitem[<{$i}>][pname]" value="<{$item.pname}>" class="input-xlarge"></td>
+                </tr>
+            </volist>
+        </table>
+        <label><input type="button" onclick="add_subitem(2);" value="增加一项"  /></label>
+        <?php }?>
+      </div>
+  </div>
+
+</div>
+
+
+         
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+  <div class="btn-group">
+  </div>
+</div>
+
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

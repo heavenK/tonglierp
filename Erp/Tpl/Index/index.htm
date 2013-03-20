@@ -1,0 +1,107 @@
+<extend name="base" />
+
+<block name="title"><title>系统主页</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+
+            
+   <div class="header">
+                <div class="stats">
+        <p class="stat"><span class="number"><{$my_ver_count}></span>等待审核</p>
+        <p class="stat"><span class="number">15</span>短消息</p>
+    </div>
+    
+                <h1 class="page-title">系统主页</h1>
+            </div>
+            
+           <ul class="breadcrumb">
+                <li><a href="index.html">主页</a> <span class="divider">/</span></li>
+                <li class="active">系统主页</li>
+            </ul>
+    
+            <div class="container-fluid">
+            <div class="row-fluid">
+
+    
+    <div class="row-fluid">
+        <div class="block span6">
+            <div class="block-heading">
+                <a href="#widget2container" data-toggle="collapse">消息记录</a>
+            </div>
+            <div id="widget2container" class="block-body collapse in">
+                <table class="table list">
+                  <thead>
+                    <tr>
+                      <th width="20%">时间</th>
+                      <th width="80%">内容</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	  <volist name="my_ver_pros" id="pro">
+                      <tr>
+                          <td>
+                              <p><{$pro.pubdate|date="Y-m-d",###}></p>
+                          </td>
+                          <td>
+                              <p><a href="<{$pro.pid|getUrl}>"><{$pro.content}></a></p>
+                          </td>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                      </volist>
+                      
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="block span6">
+            <a href="#widget1container" class="block-heading" data-toggle="collapse">公司新闻 </a>
+            <div id="widget1container" class="block-body collapse in">
+                <h2><{$news.title}></h2>
+                <p><{$news.content}></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row-fluid">
+    	<div class="block span6" style="width:100%">
+            <a href="#tablewidget" class="block-heading" data-toggle="collapse">我发布的项目<span class="label label-warning">+<{$my_count}></span></a>
+            <div id="tablewidget" class="block-body collapse in">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>项目编号</th>
+                      <th>名称</th>
+                      <th>状态</th>
+                      <th>类型</th>
+                      <th>发布时间</th>
+                      <th>负责人</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	<volist name="my_pros" id="pro">
+                    <tr>
+                      <td><{$pro.sn}></td>
+                      <td><{$pro.pname}></td>
+                      <td><{$pro.status|getStatus}></td>
+                      <td><{$pro.type|getTypes}></td>
+                      <td><{$pro.pubdate|date="Y-m-d",###}></td>
+                      <td><{$pro.principal|getNickname}></td>
+                    </tr>
+                    </volist>
+                    
+                  </tbody>
+                </table>
+                <p><a href="__APP__/Project/index/username/<{$Think.session.loginUserName}>">More...</a></p>
+            </div>
+        </div>
+        
+    </div>       
+                </div>
+            </div>
+        
+</block>
+
+<block name="footer"></block>

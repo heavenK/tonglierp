@@ -1,0 +1,117 @@
+<extend name="Index:base" />
+
+<block name="title"><title>造价通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">添加通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="index.html">主页</a> <span class="divider">/</span></li>
+            <li><a href="zhaobiao_mes.html">造价通知</a> <span class="divider">/</span></li>
+            <li class="active">编辑通知</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+<form method='post' name="login" id="form1" ACTION="__URL__/insert" enctype="multipart/form-data">             
+
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+      <li><a href="#profile" data-toggle="tab">高级属性</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+    	<input type="hidden" name="type" value="4" class="input-xlarge">
+        <label>项目编号</label>
+        <input type="text" name="sn" value="" class="input-xlarge">
+        <label>项目名称</label>
+        <input type="text" name="pname" value="" class="input-xlarge">
+        <label>业务内容</label>
+        <input type="text" name="cost_notice[content]" value="" class="input-xlarge">
+        <label>委托方</label>
+        <input type="text" name="cost_notice[client]" value="" class="input-xlarge">
+        <label>委托方联系方式</label>
+        <input type="text" name="cost_notice[clientPhone]" value="" class="input-xlarge">
+        <label>建设方</label>
+        <input type="text" name="cost_notice[building]" value="" class="input-xlarge">
+        <label>建设方联系方式</label>
+        <input type="text" name="cost_notice[buildingPhone]" value="" class="input-xlarge">
+        <label>设计方</label>
+        <input type="text" name="cost_notice[design]" value="" class="input-xlarge">
+        <label>设计方联系方式</label>
+        <input type="text" name="cost_notice[designPhone]" value="" class="input-xlarge">
+        <label>施工方</label>
+        <input type="text" name="cost_notice[implement]" value="" class="input-xlarge">
+        <label>施工方联系方式</label>
+        <input type="text" name="cost_notice[implementPhone]" value="" class="input-xlarge">
+        <label>项目收到时间</label>
+        <input class="Wdate input-xlarge" name="cost_notice[recTime]" value="" type="text"  onClick="WdatePicker()"/>
+        <label>委托方要求时限</label>
+        <input class="Wdate input-xlarge" name="cost_notice[endTime]" value="" type="text"  onClick="WdatePicker()"/>
+        
+        <label>项目负责人</label>
+        <select name="principal" id="DropDownTimezone" class="input-xlarge">
+        	<option>--</option>
+        	<{:getAllUser()}>
+   		</select>
+        
+        <label>项目组成员</label>
+        <select name="cost_notice[proMembers]" id="DropDownTimezone" class="input-xlarge">
+          	<option>--</option>
+          	<{:getAllUser()}>
+   		</select>
+    	<label>附件</label>
+   		<input name="attachment" type="file" class="input-xlarge"/>
+      </div>
+      <div class="tab-pane fade" id="profile">
+        <label>资料接收</label>
+        <textarea name="cost_notice[recData]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"></textarea>
+        <label>接收人</label>
+        <select name="cost_notice[recName]" id="DropDownTimezone" class="input-xlarge">
+        	<option>--</option>
+        	<{:getAllUser()}>
+   		</select>
+        <label>工作要求</label>
+        <textarea name="cost_notice[requires]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"></textarea>
+        <label>项目的重点、难点及需要解决的问题</label>
+        <textarea name="cost_notice[issue]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"></textarea>
+        <label>拟踏勘现场时间</label>
+        <input name="cost_notice[planLook]" class="Wdate input-xlarge" value="" type="text"  onClick="WdatePicker()"/>
+        <label>拟完成时间</label>
+        <input name="cost_notice[planFinish]" class="Wdate input-xlarge" value="" type="text"  onClick="WdatePicker()"/>
+    
+      </div>
+  </div>
+
+</div>
+
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+  <div class="btn-group">
+  </div>
+</div>
+
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

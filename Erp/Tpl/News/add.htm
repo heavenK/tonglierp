@@ -1,0 +1,65 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        <script src="__PUBLIC__/ckeditor/ckeditor.js" ></script>
+        <div class="header">
+            
+            <h1 class="page-title">添加通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="index.html">主页</a> <span class="divider">/</span></li>
+            <li><a href="zhaobiao_mes.html">消息列表</a> <span class="divider">/</span></li>
+            <li class="active">编辑</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+<form method='post' name="login" id="form1" ACTION="__URL__/insert" enctype="multipart/form-data">             
+
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+    	<input type="hidden" name="type" value="<{$Think.get.type}>" class="input-xlarge">
+        <label>名称</label>
+        <input type="text" name="title" value="" class="input-xlarge">
+        <label>缩略图</label>
+        <input type="file" name="litpic" value="" class="input-xlarge">
+        <label>内容</label>
+        <textarea class="ckeditor" cols="80" name="content" rows="10">
+		</textarea>
+      </div>
+  </div>
+
+</div>
+
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+  <div class="btn-group">
+  </div>
+</div>
+
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

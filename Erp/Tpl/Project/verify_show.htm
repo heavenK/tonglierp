@@ -1,0 +1,43 @@
+<div class="block">
+        <a href="#page-stats" class="block-heading" data-toggle="collapse">当前审核状态</a>
+        <div id="page-stats" class="block-body collapse in">
+
+            <div class="stat-widget-container">
+            	<volist name="verify" id="ver">
+            	<div class="stat-widget" style="width:auto;">
+                    <div class="stat-button">
+                        <p class="detail"><{$ver.role}>：<{$ver.username}></p>
+                    </div>
+                </div>
+            	</volist>
+            </div>
+        </div>
+    </div>
+    
+<form method='post' id="form1" name="form1" ACTION="__APP__/Logs/verify" enctype="multipart/form-data"> 
+<input type="hidden" name="pid" value="<{$vo.pid}>">
+<input type="hidden" name="need_role" value="<{$need_role}>">
+<input type="hidden" name="order" value="<{$order}>">
+<input type="hidden" id="action" name="action" value="">
+<?php if($need_role) {?>
+<div class="block">
+    <a href="#widget1container" class="block-heading" data-toggle="collapse">审核确认意见</a>
+    <div id="widget1container" class="block-body collapse in">
+    	<p></p>
+        <p><textarea id="content" name="content" style="width:80%; height:100px;"></textarea></p>
+        <p>批注文件：<input name="attachment" type="file" class="input-xlarge"/></p>
+    </div>
+</div>
+
+<div class="btn-toolbar">
+	<?php if($vo['status'] <7) {?>
+    <a href="###" onclick="verify('pass')" class="btn">提交审核</a>
+    <?php }else {?>
+    <a href="###" onclick="verify('pass')" class="btn">审核通过</a>
+    <a href="###" onclick="verify('nopass')" class="btn">审核不通过</a>
+    <?php }?>
+  <div class="btn-group">
+  </div>
+</div>
+<?php }?>
+</form>

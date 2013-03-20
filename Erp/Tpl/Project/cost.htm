@@ -1,0 +1,79 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标-<{$type|getTypes}></title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">招标-<{$type|getTypes}></h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php">主页</a> <span class="divider">/</span></li>
+            <li class="active">招标-<{$type|getTypes}></li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <a href="__APP__/Project/cost_add/type/<{$type}>" class="btn btn-primary"><i class="icon-plus"></i> 新项目</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>项目编号</th>
+          <th>名称</th>
+          <th>状态</th>
+          <th>类型</th>
+          <th>委托方</th>
+          <th>委托时间</th>
+          <th>负责人</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<volist name="list" id="cost">
+        	<tr>
+              <td><{$cost.sn}></td>
+              <td><{$cost.pname}></td>
+              <td><{$cost.status|getStatus}></td>
+              <td><{$cost.type|getTypes}></td>
+              <td><{$cost.cost.client}></td>
+              <td><{$cost.cost.delegateTime|date="Y-m-d",###}></td>
+              <td><{$cost.principal|getNickname}></td>
+              <td>
+              		<a href="###" onclick="WinOp('__APP__/Logs/index/pid/<{$cost.pid}>');"><i class="icon-info-sign"></i></a>
+                  <a href="__APP__/Project/cost_edit/type/<{$type}>/pid/<{$cost.pid}>"><i class="icon-pencil"></i></a>
+                  <a href="javascript:if(confirm('确实要删除吗?'))location='__APP__/Project/delete/pid/<{$cost.pid}>'"><i class="icon-remove"></i></a>
+              </td>
+            </tr>
+        </volist>
+        
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <{$page}>
+</div>
+
+
+                    
+            </div>
+        </div>
+        
+</block>
+
+<block name="footer"></block>
+
+    
+
+
+
+    

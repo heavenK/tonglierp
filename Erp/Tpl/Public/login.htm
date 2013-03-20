@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>通利ERP用户登录系统</title>
+    
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/bootstrap/css/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/stylesheets/theme.css">
+    <link rel="stylesheet" href="__PUBLIC__/lib/font-awesome/css/font-awesome.css">
+
+    <script src="__PUBLIC__/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+    <!-- Demo page code -->
+
+    <style type="text/css">
+        #line-chart {
+            height:300px;
+            width:800px;
+            margin: 0px auto;
+            margin-top: 1em;
+        }
+        .brand { font-family: georgia, serif; }
+        .brand .first {
+            color: #ccc;
+            font-style: italic;
+        }
+        .brand .second {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+
+  </head>
+
+  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+  <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
+  <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
+  <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> 
+  <body class=""  onLoad="document.login.account.focus()"> 
+  <!--<![endif]-->
+    <form method='post' name="login" id="form1" ACTION="__URL__/checkLogin">
+    
+    <div class="navbar">
+        <div class="navbar-inner">
+                <ul class="nav pull-right">
+                    
+                </ul>
+                <a class="brand" href="index.html"><span class="first">DALIAN</span> <span class="second">TongLi</span></a>
+        </div>
+    </div>
+    
+
+
+    
+
+    
+        <div class="row-fluid">
+    <div class="dialog">
+        <div class="block">
+            <p class="block-heading">用户登录</p>
+            <div class="block-body">
+                <form>
+                    <label>用户名</label>
+                    <input type="text" name="account" class="span12">
+                    <label>密码</label>
+                    <input type="password" name="password" class="span12">
+                    <label>验证码</label>
+                    <input type="text" onKeyDown="keydown(event)" class="small bLeftRequire" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__URL__/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+                    
+                    <a onclick="form1.submit();" class="btn btn-primary pull-right">登录</a>
+                    <label class="remember-me"><input type="checkbox"> 记住密码</label>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <p class="pull-right" style=""><a href="http://www.portnine.com" target="blank">Theme by Portnine</a></p>
+        <p><a href="reset-password.html">忘记密码？</a></p>
+    </div>
+</div>
+
+
+    
+
+
+    <script src="__PUBLIC__/lib/bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $("[rel=tooltip]").tooltip();
+        $(function() {
+            $('.demo-cancel-click').click(function(){return false;});
+        });
+    </script>
+    
+  </body>
+</html>
+
+
+

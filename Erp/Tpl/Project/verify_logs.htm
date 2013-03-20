@@ -1,0 +1,41 @@
+<div class="row-fluid">
+    <div class="block span6">
+        <div class="block-heading">
+            <a href="#widget2container" data-toggle="collapse">操作记录</a>
+        </div>
+        <div id="widget2container" class="block-body collapse in">
+            <table class="table list">
+              <tbody>
+              	  <volist name="list" id="log">
+                  <tr>
+                  	  <td>
+                          <p><{$log.pubdate|date="Y-m-d H:i:s",###}></p>
+                          
+                      </td>
+                      <td>
+                          <p><i class="icon-user"></i><{$log.username}></p>
+                      </td>
+                      <td>
+                          <p><{$log.roleid|getRole}></p>
+                      </td>
+                      <td>
+                          <p><{$log.pass|getPass}></p>
+                      </td>
+                      
+                      <td>
+                      	  <p><{$log.content}></p>
+                      </td>
+                      <td>
+                      	  <p><?php if($log['attachment']) {?><a href="__UPLOAD__<{$log.attachment}>">批注文件下载</a><?php }?></p>
+                      </td>
+                  </tr>
+                  </volist>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="pagination">
+    <{$page}>
+</div>

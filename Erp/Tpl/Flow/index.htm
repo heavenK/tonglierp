@@ -1,0 +1,65 @@
+<extend name="Index:base" />
+
+<block name="title"><title>流程定制</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">流程定制</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php">主页</a> <span class="divider">/</span></li>
+            <li class="active">流程定制</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <a href="__APP__/Flow/add" class="btn btn-primary"><i class="icon-plus"></i> 定制</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>类型</th>
+          <th>流程</th>
+        </tr>
+      </thead>
+      <tbody>
+      	<volist name="list" id="flow">
+        	<tr>
+              <td><{$i}></td>
+              <td><{$key|getTypes}></td>
+              <td><{$flow.flow}></td>
+            </tr>
+        </volist>
+        
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <{$page}>
+</div>
+
+
+                    
+            </div>
+        </div>
+        
+</block>
+
+<block name="footer"></block>
+
+    
+
+
+
+    
