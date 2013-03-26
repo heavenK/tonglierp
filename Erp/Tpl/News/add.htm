@@ -1,6 +1,6 @@
 <extend name="Index:base" />
 
-<block name="title"><title>招标通知单</title></block>
+<block name="title"><title>新闻通知</title></block>
 
 <block name="links"></block>
 
@@ -8,13 +8,13 @@
         <script src="__PUBLIC__/ckeditor/ckeditor.js" ></script>
         <div class="header">
             
-            <h1 class="page-title">添加通知</h1>
+            <h1 class="page-title">添加消息</h1>
         </div>
         
                 <ul class="breadcrumb">
-            <li><a href="index.html">主页</a> <span class="divider">/</span></li>
-            <li><a href="zhaobiao_mes.html">消息列表</a> <span class="divider">/</span></li>
-            <li class="active">编辑</li>
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__">消息列表</a> <span class="divider">/</span></li>
+            <li class="active">添加</li>
         </ul>
 
         <div class="container-fluid">
@@ -27,9 +27,13 @@
     </ul>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active in" id="home">
-    	<input type="hidden" name="type" value="<{$Think.get.type}>" class="input-xlarge">
         <label>名称</label>
         <input type="text" name="title" value="" class="input-xlarge">
+        <label>类型</label>
+        <select name="type" class="input-xlarge">
+        	<option value="news">新闻</option>
+            <option value="roll">滚动新闻</option>
+        </select>
         <label>缩略图</label>
         <input type="file" name="litpic" value="" class="input-xlarge">
         <label>内容</label>

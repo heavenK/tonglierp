@@ -84,9 +84,10 @@ class CommonAction extends Action {
         $map = array();
         foreach ($model->getDbFields() as $key => $val) {
             if (isset($_REQUEST [$val]) && $_REQUEST [$val] != '') {
-                $map [$val] = $_REQUEST [$val];
+				$map [$val] = $_REQUEST [$val];
             }
         }
+		if(isset($_REQUEST ['keyword']))	$map ['sn|pname'] = array('LIKE','%'.$_REQUEST ['keyword']."%");
         return $map;
     }
 

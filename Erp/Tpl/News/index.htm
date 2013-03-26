@@ -1,6 +1,6 @@
 <extend name="Index:base" />
 
-<block name="title"><title>招标-<{$type|getTypes}></title></block>
+<block name="title"><title>新闻通知</title></block>
 
 <block name="links"></block>
 
@@ -8,7 +8,7 @@
         
         <div class="header">
             
-            <h1 class="page-title">招标-<{$type|getTypes}></h1>
+            <h1 class="page-title">新闻通知</h1>
         </div>
         
                 <ul class="breadcrumb">
@@ -20,7 +20,7 @@
             <div class="row-fluid">
                     
 <div class="btn-toolbar">
-    <a href="__APP__/News/add/type/news" class="btn btn-primary"><i class="icon-plus"></i> 新消息</a>
+    <a href="__APP__/News/add" class="btn btn-primary"><i class="icon-plus"></i> 新消息</a>
   <div class="btn-group">
   </div>
 </div>
@@ -30,6 +30,7 @@
         <tr>
           <th>序号</th>
           <th>名称</th>
+          <th>类型</th>
           <th>发布时间</th>
           <th>发布人</th>
           <th></th>
@@ -40,6 +41,7 @@
         	<tr>
               <td><{$info.id}></td>
               <td><a href="__APP__/News/edit/id/<{$info.id}>"><{$info.title}></a></td>
+              <td><{$info.type|getNewstype}></td>
               <td><{$info.pubdate|date="Y-m-d",###}></td>
               <td><{$info.username}></td>
               <td>

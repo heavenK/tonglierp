@@ -48,7 +48,7 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a tabindex="-1" href="#">我的账户</a></li>
+                            <li><a tabindex="-1" target="_blank" href="/rbac.php/Public/password/">修改密码</a></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">主页</a></li>
                             <li class="divider visible-phone"></li>
@@ -58,7 +58,7 @@
                     
                 </ul>
                 <span style="width:50%; margin-right:20%; padding:10px 15px 10px; float:right;">
-                	<marquee style="font-size:16px;">好好学习，天天 向上！</marquee>
+                	<marquee style="font-size:16px;"><{$Think.session.loginUserName|getRollnews}></marquee>
                 </span>
                 <img src="__PUBLIC__/images/logo_small.png"/>
         </div>
@@ -88,8 +88,8 @@
             <li><a href="__APP__/Project/verify/type/5">造价-审核报告</a></li>
             <li><a href="__APP__/Project/verify/type/6">造价-清单控价</a></li>
         </ul>
-        <a href="#systemset-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-table"></i>信息发布<i class="icon-chevron-up"></i></a>
-        <ul id="systemset-menu" class="nav nav-list collapse in">
+        <a href="#infomation-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-table"></i>信息发布<i class="icon-chevron-up"></i></a>
+        <ul id="infomation-menu" class="nav nav-list collapse in">
             <li><a href="__APP__/News/lists/type/zhaobiao">招标信息</a></li>
             <li><a href="__APP__/News/lists/type/zhongbiao">中标公告</a></li>
         </ul>

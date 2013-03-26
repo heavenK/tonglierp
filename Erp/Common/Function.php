@@ -319,4 +319,20 @@ function word2pdf($doc_url, $output_url){
 	
     
 } 
+
+//	获取滚动新闻
+function getRollnews(){
+	$News = M("News");
+
+	$r_news = $News->where("`type` = 'roll'")->order("`pubdate` desc")->find();
+
+	return $r_news['title'];
+}
+
+//	获取新闻类型
+function getNewstype($type){
+	
+	if($type == 'news') return "新闻";
+	elseif($type == 'roll') return "滚动新闻";
+}
 ?>

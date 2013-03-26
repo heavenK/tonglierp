@@ -1,3 +1,4 @@
+<tagLib name="html" />
 <include file="Public:header" />
 <div id="main" class="main" >
 <script language="JavaScript">
@@ -18,7 +19,7 @@ ThinkAjax.send('__URL__/resetPwd/','ajax=1&id={$vo.id}&password='+encodeURICompo
 <tr>
 	<td class="tRight" colspan="2"><hr></td>
 </tr>
-<form method='post' id="form1" >
+<form method=post id="form1" >
 <tr>
 	<td class="tRight" >用户名：</td>
 	<td class="tLeft" ><input type="text" class="medium bLeftRequire"  check='^\S+$' warning="用户名不能为空,且不能含有空格" name="account" value="{$vo.account}"></td>

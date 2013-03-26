@@ -16,10 +16,12 @@ class IndexAction extends CommonAction {
 		
 		//	系统新闻
 		$News = D("News");
-
-		$news = $News->order("`pubdate` desc")->find();
-
+		$news = $News->where("`type` = 'news'")->order("`pubdate` desc")->find();
 		$this->assign('news', $news);
+		
+		//	滚动新闻
+		$r_news = $News->where("`type` = 'roll'")->order("`pubdate` desc")->find();
+		$this->assign('r_news', $r_news);
 		
 		
 		//	我的消息
