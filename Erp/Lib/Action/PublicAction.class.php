@@ -148,8 +148,6 @@ class PublicAction extends Action {
 		$output_file = WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"; 
 		
 		
-		echo "unoconv -f pdf -o ".WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"." ".WEB_ROOT."/Public/Uploads/".$vo['attachment'];
-		exit;
 		exec("unoconv -f pdf -o ".WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"." ".WEB_ROOT."/Public/Uploads/".$vo['attachment']);
 		
 		// windows 用的转换过程
