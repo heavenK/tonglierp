@@ -253,7 +253,7 @@ var ThinkAjax = {
 	sendForm:function(formId,url,response,target,tips,effect)
 	{
 		vars = Form.serialize(formId);
-		alert(vars);
+		//alert(vars);
 		this.send(url,vars,response,target,tips,effect);
 	},
 	// 绑定Ajax到HTML元素和事件
