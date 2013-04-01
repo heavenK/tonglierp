@@ -10,8 +10,7 @@
 	<script language="javascript" type="text/javascript" src="__PUBLIC__/lib/My97DatePicker/WdatePicker.js"></script>
     <script src="__PUBLIC__/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
 	<script src="__PUBLIC__/Js/common.js" ></script>
-    
-    <!-- Demo page code -->
+
 
     <style type="text/css">
         #line-chart {
@@ -41,19 +40,24 @@
                 <ul class="nav pull-right">
                     
                     <li><a href="/" class="hidden-phone visible-tablet visible-desktop" role="button">系统主页</a></li>
+                    <li><a href="__APP__/Index/calendar" class="hidden-phone visible-tablet visible-desktop" role="button">我的日历表</a></li>
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i> <{$Think.session.loginUserName}>
                             <i class="icon-caret-down"></i>
                         </a>
-
+                        
                         <ul class="dropdown-menu">
                             <li><a tabindex="-1" target="_blank" href="/rbac.php/Public/password/">修改密码</a></li>
+                            <li class="divider"></li>
+                            
+                            <li><{$Think.session.loginUserName|getUser_status}></li>
                             <li class="divider"></li>
                             <li><a tabindex="-1" class="visible-phone" href="#">主页</a></li>
                             <li class="divider visible-phone"></li>
                             <li><a tabindex="-1" href="__APP__/Public/logout/">退出</a></li>
                         </ul>
+                        
                     </li>
                     
                 </ul>
@@ -63,10 +67,7 @@
                 <img src="__PUBLIC__/images/logo_small.png"/>
         </div>
     </div>
-    
 
-
-    
     <div class="sidebar-nav">
     	<a href="#systemhome-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>任务信息<i class="icon-chevron-up"></i></a>
         <ul id="systemhome-menu" class="nav nav-list collapse in">
@@ -103,10 +104,25 @@
 
     
 	<div class="content">
+    
     	<block name="content">右侧主体</block>
     </div>
     
-    
+    <script>
+		function submitForm(type){
+			if(type == 1){
+				var reason=prompt("请输入离开原因","");
+				$("#reason").val(reason);
+			}
+			
+			$("#type").val(type);
+			$("#form1").submit();
+		}
+	</script>
+	<form method=post action="__APP__/Public/goOut" id="form1">
+    <input type="hidden" id="type" name="type">
+	<input type="hidden" id="reason" name="reason">
+	</form>
 	<block name="footer">底部</block>
 
     <script src="__PUBLIC__/lib/bootstrap/js/bootstrap.js"></script>

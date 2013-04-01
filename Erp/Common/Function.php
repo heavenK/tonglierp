@@ -1,4 +1,21 @@
 <?php
+//	获取当前用户状态
+function getUser_status($username){
+	$User = M("User_status");
+	
+	$condition['active'] = 1;
+	$condition['username'] = $username;
+	
+	$now = strtotime(date("Y-m-d"));
+	$condition['pubdate'] = array('egt',$now);
+	
+	$status = $User->where($condition)->find();
+
+	if($status) return '<a tabindex="-1"  onclick="submitForm(2)" href="###">回来</a>';
+	else return '<a tabindex="-1"  onclick="submitForm(1)" href="###">离开</a>';
+}
+
+
 //	通过状态ID来获取状态名
 function getStatus($val){
 	$Status = M("status");

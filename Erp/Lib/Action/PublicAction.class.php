@@ -172,4 +172,42 @@ class PublicAction extends Action {
         }
     }
 	
+	//	人员状态
+	public function goOut() {
+		$this->checkUser();
+        $User	 =	 D("User_status");
+		
+		$condition['username'] = $_SESSION['loginUserName'];
+		$res = $User->where($condition)->setField('active',0);
+		
+		if($this->_request('type') == 2){
+			if ($res !== false) { //保存成功
+	
+				$this->success('修改成功！',cookie('_currentUrl_'));
+			} else {
+				//失败提示
+				$this->error('修改失败!');
+			}
+			exit;
+		}
+		
+		$data['reason'] = $this->_request('reason');
+		
+		$data = $User->create($data);
+		
+        if (false === $data) {
+            $this->error($User->getError());
+        }
+		
+		//保存当前数据对象
+        $list = $User->add($data);
+		
+		if ($list !== false) { //保存成功
+
+            $this->success('修改成功！',cookie('_currentUrl_'));
+        } else {
+            //失败提示
+            $this->error('修改失败!');
+        }
+    }
 }
