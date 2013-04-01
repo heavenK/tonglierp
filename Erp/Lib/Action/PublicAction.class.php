@@ -143,12 +143,18 @@ class PublicAction extends Action {
         $pid	 =	 isset($_GET['pid'])?$this->_GET('pid'):$this->error('无法转换!');
 		$Pro	 =	 M("Project");
         $vo	=	$Pro->getByPid($pid);
-
+		
+		$doc_file = WEB_ROOT."/Public/Uploads/".$vo['attachment']; 
+		$output_file = WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"; 
+		exec("unoconv -f pdf -o ".WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"." ".WEB_ROOT."/Public/Uploads/".$vo['attachment']);
+		
+		// windows 用的转换过程
+		/*
 		$doc_file = "file:///".WEB_ROOT."/Public/Uploads/".$vo['attachment']; 
 		$output_file = "file:///".WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"; 
 		if(!word2pdf($doc_file,$output_file)) $this->error("您的附件不是doc形式，无法转换！");
 		
-		
+		*/
 		//$this->success('转换成功', "/Public/Uploads/".$vo['attachment'].".pdf");
 		
 		//php 强制下载PDF文件
