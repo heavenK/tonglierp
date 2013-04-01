@@ -145,14 +145,11 @@ class PublicAction extends Action {
         $vo	=	$Pro->getByPid($pid);
 		
 		$doc_file = WEB_ROOT."/Public/Uploads/".$vo['attachment']; 
-		$output_file = WEB_ROOT."/Public/Uploads/"; 
 		
-		echo "unoconv -f pdf -o ".$output_file." ".$doc_file;
+		$pdf_path = explode('/',$vo['attachment']);
 		
-		$pdf_file = str_replace(".doc",".pdf",$vo['attachment']);
+		$output_file = WEB_ROOT."/Public/Uploads/".$pdf_path['0']."/".$pdf_path['1']."/"; 
 		
-		echo $pdf_file;
-		exit;
 		
 		exec("unoconv -f pdf -o ".$output_file." ".$doc_file);
 		
