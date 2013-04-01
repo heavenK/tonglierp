@@ -4,8 +4,8 @@ return array(
 	'DB_TYPE'   => 'mysql',
 	'DB_HOST'   => 'localhost',
 	'DB_NAME'   => 'tongliERP', 
-	'DB_USER'   => 'root', 
-	'DB_PWD'    => '123', 
+	'DB_USER'   => 'tlERP', 
+	'DB_PWD'    => 'TL_erp0814', 
 	'DB_PORT'   => 3306, 
 	'DB_PREFIX' => 'tl_', 	
 	
