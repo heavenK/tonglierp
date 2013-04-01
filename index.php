@@ -1,7 +1,7 @@
 <?php
 require('./config.php');
 
-define('WEB_ROOT','/web/tongliERP');
+define('WEB_ROOT','/web/tonglierp');
 define('WWW_PATH','http://test.heavenk.com');
 
 define('APP_NAME','Erp');
