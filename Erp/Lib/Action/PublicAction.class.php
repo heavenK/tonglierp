@@ -145,10 +145,10 @@ class PublicAction extends Action {
         $vo	=	$Pro->getByPid($pid);
 		
 		$doc_file = WEB_ROOT."/Public/Uploads/".$vo['attachment']; 
-		$output_file = WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"; 
+		$output_file = WEB_ROOT."/Public/Uploads/"; 
 		
 		
-		exec("unoconv -f pdf -o ".WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf"." ".WEB_ROOT."/Public/Uploads/".$vo['attachment']);
+		exec("unoconv -f pdf -o ".$output_file." ".$doc_file);
 		
 		// windows 用的转换过程
 		/*
@@ -162,7 +162,10 @@ class PublicAction extends Action {
 		//php 强制下载PDF文件
 		header('Content-type: application/pdf');
 		header('Content-Disposition: attachment; filename='.$vo['sn']);
-		readfile(WEB_ROOT."/Public/Uploads/".$vo['attachment'].".pdf");
+		
+		$pdf_file = str_replace(".doc",".pdf",$vo['attachment']);
+		
+		readfile(WEB_ROOT."/Public/Uploads/".$pdf_file);
     }
 
     // 修改资料
