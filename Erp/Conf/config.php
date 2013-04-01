@@ -4,6 +4,11 @@ $config	=	require 'config.php';
 
 $array = array(
 
+	// session
+	'SESSION_OPTIONS'  =>array(
+     'expire' =>  3600 * 24 * 30,	
+	),
+
 	// filter
 	'DEFAULT_FILTER'=>'strip_tags,htmlspecialchars', 
 	
