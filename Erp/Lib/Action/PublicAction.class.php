@@ -147,6 +147,12 @@ class PublicAction extends Action {
 		$doc_file = WEB_ROOT."/Public/Uploads/".$vo['attachment']; 
 		$output_file = WEB_ROOT."/Public/Uploads/"; 
 		
+		echo "unoconv -f pdf -o ".$output_file." ".$doc_file;
+		
+		$pdf_file = str_replace(".doc",".pdf",$vo['attachment']);
+		
+		echo $pdf_file;
+		exit;
 		
 		exec("unoconv -f pdf -o ".$output_file." ".$doc_file);
 		
