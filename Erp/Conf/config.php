@@ -5,9 +5,7 @@ $config	=	require 'config.php';
 $array = array(
 
 	// session
-	'SESSION_OPTIONS'  =>array(
-     'expire' =>  3600 * 24 * 30,	
-	),
+	'SESSION_EXPIRE' => LOGIN_TIME,
 
 	// filter
 	'DEFAULT_FILTER'=>'strip_tags,htmlspecialchars', 

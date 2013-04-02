@@ -77,6 +77,14 @@ class PublicAction extends Action {
 			session('login_count',$authInfo['login_count']);
 			
 			/*
+			cookie(C('USER_AUTH_KEY'),$authInfo['id'],LOGIN_TIME);
+			cookie('roleId',$role_id,LOGIN_TIME);
+			cookie('email',$authInfo['email'],LOGIN_TIME);
+			cookie('loginUserName',$authInfo['nickname'],LOGIN_TIME);
+			cookie('lastLoginTime',$authInfo['last_login_time'],LOGIN_TIME);
+			cookie('login_count',$authInfo['login_count'],LOGIN_TIME);
+			*/
+			/*
             $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
 			$_SESSION['roleId']	=	$role_id;
             $_SESSION['email']	=	$authInfo['email'];
