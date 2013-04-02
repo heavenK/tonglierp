@@ -69,14 +69,25 @@ class PublicAction extends Action {
 			}
 			
 			
+			session(C('USER_AUTH_KEY'),$authInfo['id']);
+			session('roleId',$role_id);
+			session('email',$authInfo['email']);
+			session('loginUserName',$authInfo['nickname']);
+			session('lastLoginTime',$authInfo['last_login_time']);
+			session('login_count',$authInfo['login_count']);
+			
+			/*
             $_SESSION[C('USER_AUTH_KEY')]	=	$authInfo['id'];
 			$_SESSION['roleId']	=	$role_id;
             $_SESSION['email']	=	$authInfo['email'];
             $_SESSION['loginUserName']		=	$authInfo['nickname'];
             $_SESSION['lastLoginTime']		=	$authInfo['last_login_time'];
             $_SESSION['login_count']	=	$authInfo['login_count'];
+			*/
+			
             if($authInfo['account']=='admin') {
-                $_SESSION['administrator']		=	true;
+                //$_SESSION['administrator']		=	true;
+				session('administrator',true);
             }
             //保存登录信息
             $User	=	M('User');
