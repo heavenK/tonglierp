@@ -88,6 +88,7 @@ class SessionDb {
      */
    public function write($sessID,$sessData) { 
        $expire = time() + $this->lifeTime; 
+	   
        mysql_query("REPLACE INTO  ".$this->sessionTable." (  session_id, session_expire, session_data)  VALUES( '$sessID', '$expire',  '$sessData')",$this->hander); 
        if(mysql_affected_rows($this->hander)) 
            return true; 

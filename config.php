@@ -10,5 +10,10 @@ return array(
 	'DB_PREFIX' => 'tl_', 	
 	
 	'VAR_PAGE'	=>	'p',
+	
+	// session
+	
+	'SESSION_TYPE' => 'DB',
+	'SESSION_EXPIRE' => 3600 * 24 * 7,
 );
 ?>
