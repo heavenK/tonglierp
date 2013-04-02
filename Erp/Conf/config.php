@@ -5,6 +5,7 @@ $config	=	require 'config.php';
 $array = array(
 
 	// session
+	'SESSION_TYPE' => 'DB',
 	'SESSION_EXPIRE' => LOGIN_TIME,
 
 	// filter
