@@ -16,10 +16,10 @@ class LogsAction extends CommonAction {
 		
 		if($need_role == 7){
 			$project = $Project->where($p_data)->find();
-			if($project['username'] != $_SESSION['loginUserName'])	$this->error('对不起，您没有这个权限！');
+			if($project['username'] != $_SESSION['loginUserName'])	$this->error('对不起，您没有这个权限！！');
 		}elseif($need_role == 8){
 			$project = $Project->where($p_data)->find();
-			if($project['principal'] != $_SESSION[C('USER_AUTH_KEY')])	$this->error('对不起，您没有这个权限！');
+			if($project['principal'] != $_SESSION[C('USER_AUTH_KEY')])	$this->error('对不起，您不是该项目负责人！！');
 		}else{
 			if(array_search($need_role, $_SESSION['roleId']) == FALSE && array_search(9, $_SESSION['roleId']) == FALSE) $this->error('对不起，您没有这个权限！');
 		}
