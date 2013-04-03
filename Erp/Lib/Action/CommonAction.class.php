@@ -159,7 +159,7 @@ class CommonAction extends Action {
             $this->assign('sortType', $sortAlt);
             $this->assign("page", $page);
         }
-        cookie('_currentUrl_', __SELF__);
+		if($model != 'Logs')	cookie('_currentUrl_', __SELF__);
         return;
     }
 
