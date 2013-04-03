@@ -67,7 +67,7 @@
                     <label>密码</label>
                     <input type="password" name="password" class="span12">
                     <label>验证码</label>
-                    <input type="text" onKeyDown="keydown(event)" class="small bLeftRequire" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__URL__/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
+                    <input type="text" id="gotoSubmit" class="small bLeftRequire" check="Require" warning="请输入验证码" name="verify"> <img id="verifyImg" SRC="__URL__/verify/" onClick="fleshVerify()" BORDER="0" ALT="点击刷新验证码" style="cursor:pointer" align="absmiddle">
                     
                     <a onclick="form1.submit();" class="btn btn-primary pull-right">登录</a>
                     <label class="remember-me"><input type="checkbox"> 记住密码</label>
@@ -86,10 +86,15 @@
 
     <script src="__PUBLIC__/lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript">
-        $("[rel=tooltip]").tooltip();
-        $(function() {
-            $('.demo-cancel-click').click(function(){return false;});
-        });
+        $(document).ready(  
+            function() {  
+                $("#gotoSubmit").keydown(function(event) {  
+                    if (event.keyCode == 13) {  
+                        form1.submit();
+                    }  
+                })  
+            }  
+        );
     </script>
     
   </body>
