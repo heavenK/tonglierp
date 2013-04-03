@@ -38,7 +38,7 @@
           <th>收到时间</th>
           <th>要求时限</th>
           <th>负责人</th>
-          <th>编写人</th>
+          <th>发布人</th>
           <th></th>
         </tr>
       </thead>
@@ -53,7 +53,7 @@
               <td><{$tenders.tenders_notice.recTime|date="Y-m-d",###}></td>
               <td><{$tenders.tenders_notice.endTime|date="Y-m-d",###}></td>
               <td><{$tenders.principal|getNickname}></td>
-              <td><{$tenders.tenders_notice.copywriter|getNickname}></td>
+              <td><{$tenders.username}></td>
               <td>
               	<a href="###" onclick="WinOp('__APP__/Logs/index/pid/<{$tenders.pid}>');"><i class="icon-info-sign"></i></a>
                   <a href="__APP__/Project/tenders_notice_edit/pid/<{$tenders.pid}>"><i class="icon-pencil"></i></a>

@@ -31,6 +31,7 @@
           <th>收到时间</th>
           <th>要求时限</th>
           <th>负责人</th>
+		  <th>发布人</th>
           <th></th>
         </tr>
       </thead>
@@ -45,6 +46,7 @@
               <td><{$cost.cost_notice.recTime|date="Y-m-d",###}></td>
               <td><{$cost.cost_notice.endTime|date="Y-m-d",###}></td>
               <td><{$cost.principal|getNickname}></td>
+			  <td><{$cost.username}></td>
               <td>
               	<a href="###" onclick="WinOp('__APP__/Logs/index/pid/<{$cost.pid}>');"><i class="icon-info-sign"></i></a>
               </td>
