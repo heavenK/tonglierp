@@ -36,7 +36,12 @@ class ProjectModel extends CommonModel {
 		$wheres['sn'] = $this->_request('sn');
 		$wheres['type'] = $this->_request('type');
 		
-		if ($Pro->where($wheres)->find())
+		$res = $Pro->where($wheres)->find();
+		
+		dump($res);
+		exit;
+		
+		if ($res)
 			return false;
 		else 
 			return true;
