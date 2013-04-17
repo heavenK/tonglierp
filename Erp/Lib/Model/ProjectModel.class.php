@@ -10,7 +10,7 @@ class ProjectModel extends CommonModel {
 		array('pname','require','项目名称不可以为空'),
 		array('type',array(0,1,2,3,4,5,6,7),'值的范围不正确！',2,'in'), 
 		array('status',array(0,1,2,3,4,5,6,7,8,9,10),'值的范围不正确！',2,'in'), 
-		array('sn','getSN','编号已经存在',self::EXISTS_VALIDATE,0,self::MODEL_BOTH),
+		array('sn','getSN','编号已经存在',self::EXISTS_VALIDATE,'function',self::MODEL_BOTH),
         );
 
     public $_auto		=	array(
