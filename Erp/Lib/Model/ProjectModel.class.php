@@ -33,12 +33,13 @@ class ProjectModel extends CommonModel {
         
 		$Pro = D("Project"); 
 		
-		$where['sn'] = $this->_request('sn');
-		$where['type'] = $this->_request('type');
+		$wheres['sn'] = $this->_request('sn');
+		$wheres['type'] = $this->_request('type');
 		
-		if ($Pro->where($where)->find())
+		if ($Pro->where($wheres)->find())
+			return false;
+		else 
 			return true;
-		else return false;
 		
     }
 	
