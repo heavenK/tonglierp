@@ -33,7 +33,11 @@
 
   </head>
 
-  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+      <!--[if lt IE 7 ]>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/bootstrap/css/bootstrap-ie6.css">
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/bootstrap/css/ie.css">
+        <body class=""  onLoad="document.login.account.focus()"> 
+	<![endif]-->
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
   <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
@@ -96,7 +100,9 @@
             }  
         );
     </script>
-    
+        <!--[if lt IE 7 ]>
+	<script type="text/javascript" src="__PUBLIC__/lib/bootstrap/js/bootstrap-ie.js"></script>
+	<![endif]-->
   </body>
 </html>
 
