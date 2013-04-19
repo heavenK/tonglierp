@@ -1,0 +1,34 @@
+<div class="block">
+        <a>当前审核状态</a>
+        <volist name="verify" id="ver">
+        	<{$ver.role}>：<{$ver.username}> &nbsp;&nbsp;
+        </volist>
+    </div>
+    
+<form method='post' id="form1" name="form1" ACTION="__APP__/Logs/verify" enctype="multipart/form-data"> 
+<input type="hidden" name="pid" value="<{$vo.pid}>">
+<input type="hidden" name="need_role" value="<{$need_role}>">
+<input type="hidden" name="order" value="<{$order}>">
+<input type="hidden" id="action" name="action" value="">
+<?php if($need_role) {?>
+<div class="block">
+    <a>审核确认意见</a>
+    <div>
+    	<p></p>
+        <p><textarea id="content" name="content" style="width:80%; height:100px;"></textarea></p>
+        <p>批注文件：<input name="attachment" type="file" class="input-xlarge"/></p>
+    </div>
+</div>
+
+<div class="btn-toolbar">
+	<?php if($vo['status'] <7) {?>
+    <a href="###" onclick="verify('pass')" class="btn">提交审核</a>
+    <?php }else {?>
+    <a href="###" onclick="verify('pass')" class="btn">审核通过</a>
+    <a href="###" onclick="verify('nopass')" class="btn">审核不通过</a>
+    <?php }?>
+  <div class="btn-group">
+  </div>
+</div>
+<?php }?>
+</form>

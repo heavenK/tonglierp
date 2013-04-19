@@ -1,0 +1,64 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标审核</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">招标审核</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__/verify/type/<{$type}>">招标通知</a> <span class="divider">/</span></li>
+            <li class="active">招标审核</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+            
+<include file="verify_show" />
+
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <label>项目编号：<{$vo.sn}></label>
+        <label>项目名称：<{$vo.pname}></label>
+        <label>采购内容：<{$vo.tenders_notice.content}></label>
+        <label>招标方：<{$vo.tenders_notice.tenderer}></label>
+        <label>招标联系人：<{$vo.tenders_notice.tenderLinkman}></label>
+        <label>联系电话：<{$vo.tenders_notice.linkPhone}></label>
+        <label>项目收到时间：<{$vo.tenders_notice.recTime|date="Y-m-d",###}></label>
+        <label>采购人要求时限：<{$vo.tenders_notice.endTime|date="Y-m-d",###}></label>
+        <label>采购方式：<{$vo.tenders_notice.buyType}></label>
+        <label>拟分派项目负责人：<{$vo.principal|getNickname}></label>
+        <label>拟分派项目编写人：<{$vo.tenders_notice.copywriter|getNickname}></label>
+        <label>配合人员：<{$vo.tenders_notice.cooperate|getNickname}></label>
+        <label>项目的实施方案、计划、市场调研情况：<{$vo.tenders_notice_ext.survey}></label>
+        <label>项目的重点、难点分析、需要解决的问题及是否需要专家咨询或认证：<{$vo.tenders_notice_ext.issue}></label>
+        <label>是否外请专家及采购办专家储备情况：<{$vo.tenders_notice_ext.expert}></label>
+        <label>拟完成编写时间：<{$vo.tenders_notice_ext.planWriteTime|date="Y-m-d",###}></label>
+        <label>拟完成内审时间：<{$vo.tenders_notice_ext.planInnerTime|date="Y-m-d",###}></label>
+        <label>拟送审时间：<{$vo.tenders_notice_ext.planVerifyTime|date="Y-m-d",###}></label>
+    	<label><?php if($vo['attachment']) {?>附件：<a href="__UPLOAD__<{$vo.attachment}>">点击下载</a>--------<a target="_blank" href="__APP__/Public/wordTOpdf/pid/<{$vo.pid}>">转换成PDF版并下载</a><?php }?></label>
+      </div>
+  </div>
+
+</div>
+
+
+<include file="verify_logs" />
+
+
+
+            </div>
+        </div>
+        
+        
+
+</block>
+
+<block name="footer"></block>

@@ -31,7 +31,12 @@
     </style>
     
     <block name="links">自己定义的样式文件</block>
-    
+    	<!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/bootstrap/css/bootstrap-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/lib/bootstrap/css/ie.css">
+    <![endif]-->
 
     
   </head>
@@ -44,6 +49,7 @@
                     
                     <li><a href="/" class="hidden-phone visible-tablet visible-desktop" role="button">系统主页</a></li>
                     <li><a href="__APP__/Index/calendar" class="hidden-phone visible-tablet visible-desktop" role="button">我的日历表</a></li>
+                    <li><a href="/index.php?t=ie6"> 进入老版后台</a></li>
                     <li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-user"></i> <{$Think.session.loginUserName}>
@@ -135,6 +141,9 @@
             $('.demo-cancel-click').click(function(){return false;});
         });
     </script>
+     <!--[if lte IE 6]>
+    <script type="text/javascript" src="__PUBLIC__/lib/bootstrap/js/bootstrap-ie.js"></script>
+    <![endif]-->
   </body>
 </html>
 

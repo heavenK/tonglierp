@@ -1,0 +1,82 @@
+<extend name="base" />
+
+<block name="title"><title>我的日历表</title></block>
+
+<block name="links">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/lib/fullcalendar-1.5.3/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/lib/fullcalendar-1.5.3/fullcalendar/fullcalendar.print.css' media='print' />
+<script type='text/javascript' src='__PUBLIC__/lib/fullcalendar-1.5.3/fullcalendar/fullcalendar.min.js'></script>
+</block>
+
+<block name="content">
+
+
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		$('#calendar').fullCalendar({
+            //header: false,
+			 header:{
+				right: 'prev,next today',
+				center: 'title',
+				left: 'month,agendaWeek,agendaDay'
+			  },
+			buttonText:{
+				 today:    '今天',
+				 month:    '月',
+				 week:     '周',
+				 day:      '日'
+			},
+			events: [
+					<volist name="my_pros" id="pro">
+					{
+						title  : '<{$pro.sn}>-<{$pro.pname}>',
+						start  : '<{$pro.pubdate}>',
+						url	   : '<{$pro.pid|getUrl}>'
+					},
+					</volist>
+				],
+		});
+		
+		
+		
+        $('#calendar').fullCalendar();
+
+	});
+
+</script>
+<style type='text/css'>
+
+	#calendar {
+		width: 100%;
+		margin: 0 auto;
+		}
+
+</style>
+<div class="header">
+            
+            <h1 class="page-title">我的日历表</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php" target="_top">主页</a> <span class="divider">/</span></li>
+            <li class="active">我的日历表</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div id='calendar'></div>
+            </div>
+        </div>
+
+
+</block>
+
+<block name="footer"></block>

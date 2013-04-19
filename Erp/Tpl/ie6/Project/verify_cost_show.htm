@@ -1,0 +1,132 @@
+<extend name="Index:base" />
+
+<block name="title"><title>造价审核</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">造价审核</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__/verify/type/<{$type}>">造价项目</a> <span class="divider">/</span></li>
+            <li class="active">审核项目</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+            
+            
+<include file="verify_show" />
+
+		<?php if($type == 5) {?>
+		<div class="block">
+                <p class="block-heading">注意事项</p>
+                <div class="block-body">
+                    <h2>审核的主要内容：</h2>
+                    <table>
+                    	<tr>
+                        	<td>1、成果文件格式，内容前后是否呼应；</td>
+                            <td>2、报告内容如项目名称、数值等是否核对正确；</td>
+                        </tr>
+                        <tr>
+                        	<td>3、是否针对特殊项目制定特殊条款； </td>
+                            <td>4、是否按合同、招投标文件及相关审核文件来审核；</td>
+                        </tr>
+                        <tr>
+                        	<td>5、审核依据是否充分；</td>
+                            <td>6、工程量是否准确、主要材料单价是否合理；</td>
+                        </tr>
+                        <tr>
+                        	<td>7、签证单是否符合要求</td>
+                            <td>8、规费及相关其它费用是否按现行文件执行；</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <?php }else {?>  
+        <div class="block">
+                <p class="block-heading">注意事项</p>
+                <div class="block-body">
+                    <h2>审核的主要内容：</h2>
+                    <table>
+                    	<tr>
+                        	<td>1、成果文件格式，内容前后是否呼应；</td>
+                            <td>2、项目名称、编制说明等是否核对正确；</td>
+                        </tr>
+                        <tr>
+                        	<td>3、是否按照委托方要求编制成果文件； </td>
+                            <td>4、是否针对特殊项目制定特殊条款；</td>
+                        </tr>
+                        <tr>
+                        	<td>5、工程量清单是否依据《建设工程工程量清单计价规范》（GB50500-2008）编制；</td>
+                            <td>6、工程量清单编制是否完整，荐、量套的是否正确，主材的标准是否明确具体，是否将措施费、规费等费用单独列出；</td>
+                        </tr>
+                        <tr>
+                        	<td>7、主要材料单价是否合理；</td>
+                            <td>8、规费及相关其它费用是否按现行文件执行；</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+          <?php }?>
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <label>项目编号：<{$vo.sn}></label>
+        <label>项目名称：<{$vo.pname}></label>
+        <label>委托方：<{$vo.cost.client}></label>
+        <label>委托时间：<{$vo.cost.delegateTime}></label>
+        <label>项目负责人：<{$vo.principal|getNickname}></label>
+        <label>项目组成员：<{$vo.cost.proMembers|getNickname}></label>
+    	<label>特殊情况说明：<{$vo.cost.info}></label>
+        <label>附件：<?php if($vo['attachment']) {?><a href="__UPLOAD__<{$vo.attachment}>">点击下载</a>--------<a target="_blank" href="__APP__/Public/wordTOpdf/pid/<{$vo.pid}>">转换成PDF版并下载</a><?php }?></label>
+      	<?php if($type == 5) {?>
+        <table class="cost_subitem_s" border="1">
+        	<tr>
+            	<th>序号</th>
+            	<th>专业</th>
+                <th>送审额</th>
+                <th>审定额</th>
+                <th>审减额</th>
+            </tr>
+            <volist name="vo_sub" id="item">
+            	<tr>
+                    <td><{$i}></td>
+                    <td><{$item.pname}></td>
+                    <td><{$item.cost_subitem.submitMoney}></td>
+                    <td><{$item.cost_subitem.judgeMoney}></td>
+                    <td><{$item.cost_subitem.reduceMoney}></td>
+                </tr>
+            </volist>
+        </table>
+        <?php }else {?>  
+        <table class="cost_subitem_s" border="1">
+        	<tr>
+            	<th>专业</th>
+            </tr>
+            <volist name="vo_sub" id="item">
+            	<tr>
+                    <td><{$i}></td>
+                    <td><{$item.pname}></td>
+                </tr>
+            </volist>
+        </table>
+        <?php }?>
+      </div>
+  </div>
+
+</div>
+        
+<include file="verify_logs" />
+
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

@@ -1,0 +1,85 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">招标通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php" target="_top">主页</a> <span class="divider">/</span></li>
+            <li class="active">招标通知</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+            	
+			<include file="search" />
+                
+<div class="btn-toolbar">
+    <a href="__APP__/Project/tenders_notice_add" class="btn btn-primary"><i class="icon-plus"></i> 新通知</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>项目编号</th>
+          <th>名称</th>
+          <th>状态</th>
+          <th>采购内容</th>
+          <th>招标方</th>
+          <th>收到时间</th>
+          <th>要求时限</th>
+          <th>负责人</th>
+          <th>发布人</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<volist name="list" id="tenders">
+        	<tr>
+              <td><{$tenders.sn}></td>
+              <td><{$tenders.pname}></td>
+              <td><{$tenders.status|getStatus}></td>
+              <td><{$tenders.tenders_notice.content}></td>
+              <td><{$tenders.tenders_notice.tenderer}></td>
+              <td><{$tenders.tenders_notice.recTime|date="Y-m-d",###}></td>
+              <td><{$tenders.tenders_notice.endTime|date="Y-m-d",###}></td>
+              <td><{$tenders.principal|getNickname}></td>
+              <td><{$tenders.username}></td>
+              <td>
+              	<a href="###" onclick="WinOp('__APP__/Logs/index/pid/<{$tenders.pid}>');"><i class="icon-info-sign"></i></a>
+                  <a href="__APP__/Project/tenders_notice_edit/pid/<{$tenders.pid}>"><i class="icon-pencil"></i></a>
+                  <a href="javascript:if(confirm('确实要删除吗?'))location='__APP__/Project/delete/pid/<{$tenders.pid}>'"><i class="icon-remove"></i></a>
+              </td>
+            </tr>
+        </volist>
+        
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <{$page}>
+</div>
+
+
+                    
+            </div>
+        </div>
+        
+</block>
+
+<block name="footer"></block>
+
+    
+
+
+
+    

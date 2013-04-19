@@ -1,0 +1,66 @@
+<extend name="Index:base" />
+
+<block name="title"><title>造价审核</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">造价审核</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__/verify/type/<{$type}>">造价通知</a> <span class="divider">/</span></li>
+            <li class="active">造价审核</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+            
+<include file="verify_show" />
+
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+    	<input type="hidden" name="type" value="4" class="input-xlarge">
+        <label>项目编号：<{$vo.sn}></label>
+        <label>项目名称：<{$vo.pname}></label>
+        <label>业务内容：<{$vo.cost_notice.content}></label>
+        <label>委托方：<{$vo.cost_notice.client}></label>
+        <label>委托方联系方式：<{$vo.cost_notice.clientPhone}></label>
+        <label>建设方：<{$vo.cost_notice.building}></label>
+        <label>建设方联系方式：<{$vo.cost_notice.buildingPhone}></label>
+        <label>设计方：<{$vo.cost_notice.design}></label>
+        <label>设计方联系方式：<{$vo.cost_notice.designPhone}></label>
+        <label>施工方：<{$vo.cost_notice.implement}></label>
+        <label>施工方联系方式：<{$vo.cost_notice.implementPhone}></label>
+        <label>项目收到时间：<{$vo.cost_notice.recTime|date="Y-m-d",###}></label>
+        <label>委托方要求时限：<{$vo.cost_notice.endTime|date="Y-m-d",###}></label>
+        <label>项目负责人：<{$vo.principal|getNickname}></label>
+        <label>项目组成员：<{$vo.cost_notice.proMembers|getNickname}></label>
+    	<label>附件：<?php if($vo['attachment']) {?><a href="__UPLOAD__<{$vo.attachment}>">点击下载</a>--------<a target="_blank" href="__APP__/Public/wordTOpdf/pid/<{$vo.pid}>">转换成PDF版并下载</a><?php }?></label>
+        <label>资料接收：<{$vo.cost_notice.recData}></label>
+        <label>接收人：<{$vo.cost_notice.recName|getNickname}></label>
+        <label>工作要求：<{$vo.cost_notice.requires}></label>
+        <label>项目的重点、难点及需要解决的问题：<{$vo.cost_notice.issue}></label>
+        <label>拟踏勘现场时间：<{$vo.cost_notice.planLook|date="Y-m-d",###}></label>
+        <label>拟完成时间：<{$vo.cost_notice.planFinish|date="Y-m-d",###}></label>
+      </div>
+  </div>
+
+</div>
+
+</form>
+
+<include file="verify_logs" />
+
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

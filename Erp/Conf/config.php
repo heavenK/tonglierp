@@ -10,8 +10,11 @@ $array = array(
 	'DEFAULT_FILTER'=>'strip_tags,htmlspecialchars', 
 	
 	// template file suffix
-	'TMPL_TEMPLATE_SUFFIX'=>'.htm',  
+	'TMPL_TEMPLATE_SUFFIX'=>'.htm', 
 	
+	'DEFAULT_THEME'  => 'default', 
+	'TMPL_DETECT_THEME'=>true,
+	'THEME_LIST'		=>	'default,ie6',
 	
 	// file path replace
 	'TMPL_PARSE_STRING'  =>array(

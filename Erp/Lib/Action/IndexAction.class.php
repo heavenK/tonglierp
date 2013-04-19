@@ -53,6 +53,11 @@ class IndexAction extends CommonAction {
         $this->display();
     }
 	
+	public function main(){
+		
+        $this->index();
+    }
+	
 	public function calendar(){
 		
 		//	我的项目

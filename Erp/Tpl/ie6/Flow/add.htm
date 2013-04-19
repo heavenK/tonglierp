@@ -1,0 +1,84 @@
+<extend name="Index:base" />
+
+<block name="title"><title>流程定制</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">添加流程</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="index.html">主页</a> <span class="divider">/</span></li>
+            <li><a href="zhaobiao_mes.html">流程定制</a> <span class="divider">/</span></li>
+            <li class="active">添加流程</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+<form method='post' name="login" id="form1" ACTION="__URL__/insert" enctype="multipart/form-data">             
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+    <a href="#myModal" data-toggle="modal" class="btn">删除</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <label>类型选择</label>
+        <select name="tid" id="DropDownTimezone" class="input-xlarge">
+        	<option>--</option>
+        	<{:getAllType()}>
+   		</select>
+        <label>审核流程(按先后顺序选择)</label>
+        <select name="roleid[]" onchange="add_flowRole(1);" id="role_1" class="input-xlarge">
+        	<option value="0">结束</option>
+        	<{:getAllRole()}>
+   		</select>
+        <div id="roles" style="display:none">
+        	<{:getAllRole()}>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+<div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Delete Confirmation</h3>
+  </div>
+  <div class="modal-body">
+    
+    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+  </div>
+</div>
+
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

@@ -11,7 +11,10 @@ class PublicAction extends Action {
     // 用户登录页面
     public function login() {
         if(!isset($_SESSION[C('USER_AUTH_KEY')])) {
-            $this->display();
+			if($_COOKIE['think_template'] != 'ie6' &&strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 6.0") || strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 7.0")|| strpos($_SERVER["HTTP_USER_AGENT"],"MSIE 8.0")){
+				echo "<script>if(confirm('由于您的浏览器太老，您将访问老式后台界面！进入老式后台吗？')) top.location='/index.php?t=ie6';</script>";
+			}
+			$this->display();
         }else{
             $this->redirect('Index/index');
         }

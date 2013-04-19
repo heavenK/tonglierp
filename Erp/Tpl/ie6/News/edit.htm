@@ -1,0 +1,72 @@
+<extend name="Index:base" />
+
+<block name="title"><title>新闻通知</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        <script src="__PUBLIC__/ckeditor/ckeditor.js" ></script>
+        <div class="header">
+            
+            <h1 class="page-title">编辑通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__">消息列表</a> <span class="divider">/</span></li>
+            <li class="active">编辑</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+<form method='post' name="login" id="form1" ACTION="__URL__/update" enctype="multipart/form-data">             
+
+<div class="well">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+        <input type="hidden" name="id" value="<{$vo.id}>" class="input-xlarge">
+        <label>名称</label>
+        <input type="text" name="title" value="<{$vo.title}>" class="input-xlarge">
+        <label>类型</label>
+        <select name="type" class="input-xlarge">
+        	<option value="<{$vo.type}>"><{$vo.type|getNewstype}></option>
+        	<option value="news">新闻</option>
+            <option value="roll">滚动新闻</option>
+        </select>
+        <label>缩略图</label>
+        <?php if($vo['litpic']) {?><img width="200" src="__UPLOAD__/<{$vo.litpic}>" /><?php }?>
+        <input type="file" name="litpic" class="input-xlarge">
+        <label>内容</label>
+        <textarea class="ckeditor" cols="80" name="content" rows="10"><{$vo.content}>
+		</textarea>
+      </div>
+  </div>
+
+</div>
+
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+  <div class="btn-group">
+  </div>
+</div>
+
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>

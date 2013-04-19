@@ -1,0 +1,74 @@
+<extend name="Index:base" />
+
+<block name="title"><title>新闻通知</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">新闻通知</h1>
+        </div>
+        
+                <ul class="breadcrumb">
+            <li><a href="/index.php" target="_top">主页</a> <span class="divider">/</span></li>
+            <li class="active">消息列表</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                    
+<div class="btn-toolbar">
+    <a href="__APP__/News/add" class="btn btn-primary"><i class="icon-plus"></i> 新消息</a>
+  <div class="btn-group">
+  </div>
+</div>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>发布时间</th>
+          <th>发布人</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      	<volist name="list" id="info">
+        	<tr>
+              <td><{$info.id}></td>
+              <td><a href="__APP__/News/edit/id/<{$info.id}>"><{$info.title}></a></td>
+              <td><{$info.type|getNewstype}></td>
+              <td><{$info.pubdate|date="Y-m-d",###}></td>
+              <td><{$info.username}></td>
+              <td>
+              		<a href="__APP__/News/edit/id/<{$info.id}>"><i class="icon-pencil"></i></a>
+              		<a href="javascript:if(confirm('确实要删除吗?'))location='__APP__/News/foreverdelete/id/<{$info.id}>'"><i class="icon-remove"></i></a>
+              </td>
+            </tr>
+        </volist>
+        
+      </tbody>
+    </table>
+</div>
+<div class="pagination">
+    <{$page}>
+</div>
+
+
+                    
+            </div>
+        </div>
+        
+</block>
+
+<block name="footer"></block>
+
+    
+
+
+
+    

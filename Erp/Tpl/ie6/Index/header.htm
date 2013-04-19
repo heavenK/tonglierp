@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<script src="__PUBLIC__/lib/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Js/common.js" ></script>
+<LINK href="__PUBLIC__/ie6/css/admin.css" type="text/css" rel="stylesheet">
+</HEAD>
+<BODY>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" 
+background="__PUBLIC__/ie6/images/header_bg.jpg" border=0>
+  <TR height=56>
+    <TD width=260><IMG height=56 src="__PUBLIC__/ie6/images/header_left.jpg" 
+    width=260></TD>
+    <td width="500"  style="FONT-WEIGHT: bold; COLOR: #fff; PADDING-TOP: 20px" 
+      align=middle>
+    <marquee style="font-size:16px;"><{$Think.session.loginUserName|getRollnews}></marquee>
+    </td>
+    <TD style="FONT-WEIGHT: bold; COLOR: #fff; PADDING-TOP: 20px" 
+      align=middle>当前用户：<{$Think.session.loginUserName}> &nbsp;&nbsp; <A style="COLOR: #fff" 
+      href="/rbac.php/Public/password/" 
+      target=main>修改口令</A> &nbsp;&nbsp;<{$Think.session.loginUserName|getUser_status}>&nbsp;&nbsp;<A style="COLOR: #fff" 
+      onclick="if (confirm('确定要退出吗？')) return true; else return false;" 
+      href="__APP__/Public/logout/" target=_top>退出系统</A> &nbsp;&nbsp;<A style="COLOR: #fff" 
+      onclick="if (confirm('如果您的浏览器为老式浏览器将无法正常显示，确认进入吗？')) return true; else return false;" 
+      href="/index.php?t=default" target=_top>进入新式后台</A> 
+    </TD>
+    <TD align=right width=268><IMG height=56 
+      src="__PUBLIC__/ie6/images/header_right.jpg" width=268></TD></TR></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TR bgColor=#1c5db6 height=4>
+    <TD></TD></TR></TABLE>
+    <script>
+		function submitForm(type){
+			if(type == 1){
+				var reason=prompt("请输入离开原因","");
+				$("#reason").val(reason);
+			}
+			
+			$("#type").val(type);
+			$("#form_status").submit();
+		}
+	</script>
+    <form method=post action="__APP__/Public/goOut" id="form_status" target="main">
+    <input type="hidden" id="type" name="type">
+	<input type="hidden" id="reason" name="reason">
+	</form>
+    </BODY></HTML>

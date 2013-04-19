@@ -1,0 +1,103 @@
+<extend name="Index:base" />
+
+<block name="title"><title>招标通知单</title></block>
+
+<block name="links"></block>
+
+<block name="content">
+        
+        <div class="header">
+            
+            <h1 class="page-title">编辑通知</h1>
+        </div>
+        
+        <ul class="breadcrumb">
+            <li><a href="/">主页</a> <span class="divider">/</span></li>
+            <li><a href="__URL__/tenders_notice">招标通知</a> <span class="divider">/</span></li>
+            <li class="active">编辑通知</li>
+        </ul>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+<form method='post' id="form1" ACTION="__URL__/update" enctype="multipart/form-data">             
+
+<div class="well">
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="home">
+    	<input type="hidden" name="pid" value="<{$vo.pid}>" class="input-xlarge">
+        <label>项目编号</label>
+        <input type="text" name="sn" value="<{$vo.sn}>" class="input-xlarge">
+        <label>项目名称</label>
+        <input type="text" name="pname" value="<{$vo.pname}>" class="input-xlarge">
+        <label>采购内容</label>
+        <input type="text" name="tenders_notice[content]" value="<{$vo.tenders_notice.content}>" class="input-xlarge">
+        <label>招标方</label>
+        <input type="text" name="tenders_notice[tenderer]" value="<{$vo.tenders_notice.tenderer}>" class="input-xlarge">
+        <label>招标联系人</label>
+        <input type="text" name="tenders_notice[tenderLinkman]" value="<{$vo.tenders_notice.tenderLinkman}>" class="input-xlarge">
+        <label>联系电话</label>
+        <input type="text" name="tenders_notice[linkPhone]" value="<{$vo.tenders_notice.linkPhone}>" class="input-xlarge">
+        <label>项目收到时间</label>
+        <input class="Wdate input-xlarge" name="tenders_notice[recTime]" value="<{$vo.tenders_notice.recTime|date="Y-m-d",###}>" type="text"  onClick="WdatePicker()"/>
+        <label>采购人要求时限</label>
+        <input class="Wdate input-xlarge" name="tenders_notice[endTime]" value="<{$vo.tenders_notice.endTime|date="Y-m-d",###}>" type="text"  onClick="WdatePicker()"/>
+        <label>采购方式</label>
+        <input type="text" name="tenders_notice[buyType]" value="<{$vo.tenders_notice.buyType}>" class="input-xlarge">
+        <label>拟分派项目负责人</label>
+        <select name="principal"  id="DropDownTimezone" class="input-xlarge">
+        	<option value="<{$vo.principal}>"><{$vo.principal|getNickname}></option>
+        	<{:getAllUser()}>
+   		</select>
+        <label>拟分派项目编写人</label>
+        <select name="tenders_notice[copywriter]" id="DropDownTimezone" class="input-xlarge">
+        	<option value="<{$vo.tenders_notice.copywriter}>"><{$vo.tenders_notice.copywriter|getNickname}></option>
+          	<{:getAllUser()}>
+   		</select>
+        <label>配合人员</label>
+        <select name="tenders_notice[cooperate]" id="DropDownTimezone" class="input-xlarge">
+          	<option value="<{$vo.tenders_notice.cooperate}>"><{$vo.tenders_notice.cooperate|getNickname}></option>
+          	<{:getAllUser()}>
+   		</select>
+    	<label>附件</label>
+   		<?php if($vo['attachment']) {?><a href="__UPLOAD__<{$vo.attachment}>">点击下载</a><?php }?><input name="attachment" type="file" class="input-xlarge"/>
+        
+        <label>项目的实施方案、计划、市场调研情况</label>
+        <textarea name="tenders_notice_ext[survey]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"><{$vo.tenders_notice_ext.survey}></textarea>
+        <label>项目的重点、难点分析、需要解决的问题及是否需要专家咨询或认证</label>
+        <textarea name="tenders_notice_ext[issue]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"><{$vo.tenders_notice_ext.issue}></textarea>
+        <label>是否外请专家及采购办专家储备情况</label>
+        <textarea name="tenders_notice_ext[expert]" value="Smith" rows="3" class="input-xlarge" style="width:400px;"><{$vo.tenders_notice_ext.expert}></textarea>
+        <label>拟完成编写时间</label>
+        <input name="tenders_notice_ext[planWriteTime]" class="Wdate input-xlarge" value="<{$vo.tenders_notice_ext.planWriteTime|date="Y-m-d",###}>" type="text"  onClick="WdatePicker()"/>
+        <label>拟完成内审时间</label>
+        <input name="tenders_notice_ext[planInnerTime]" class="Wdate input-xlarge" value="<{$vo.tenders_notice_ext.planInnerTime|date="Y-m-d",###}>" type="text"  onClick="WdatePicker()"/>
+        <label>拟送审时间</label>
+        <input name="tenders_notice_ext[planVerifyTime]" class="Wdate input-xlarge" value="<{$vo.tenders_notice_ext.planVerifyTime|date="Y-m-d",###}>" type="text"  onClick="WdatePicker()"/>
+      </div>
+  </div>
+
+</div>
+
+
+<div class="btn-toolbar">
+    <button type="submit" class="btn btn-primary"><i class="icon-save"></i> 保存</button>
+  <div class="btn-group">
+  </div>
+</div>
+</form>
+                    
+                    <footer>
+                        <hr>
+
+                        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                        <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                        <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+                    </footer>
+                    
+            </div>
+        </div>
+
+</block>
+
+<block name="footer"></block>
