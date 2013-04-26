@@ -1,0 +1,22 @@
+<div class="block-heading">
+    <a>新消息(<{$my_ver_count}>)</a>	
+</div>
+<div>
+    <table class="table list">
+      <tbody>
+          <volist name="my_ver_pros" id="pro">
+          <tr title="<{$pro.pubdate}>">
+              <td width="20%">
+                  <p><{$pro.pubdate|date="Y-m-d",###}></p>
+              </td>
+              <td width="80%">
+                  <p><a target="_blank" href="<{$pro.pid|getUrl}>"><{$pro.content}></a></p>
+              </td>
+              <td></td>
+              <td></td>
+          </tr>
+          </volist>
+          
+      </tbody>
+    </table>
+</div>

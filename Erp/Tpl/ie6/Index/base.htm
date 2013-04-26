@@ -52,6 +52,62 @@
     <!--[if lte IE 6]>
     <script type="text/javascript" src="__PUBLIC__/lib/bootstrap/js/bootstrap-ie.js"></script>
     <![endif]-->
+    <script type="text/javascript">
+$(document).ready(function(){
+	
+	getNews();
+	window.setInterval(getNews,5000);
+	function getNews(){
+		
+		var now_pubdate = $('.overlay tr').first().attr('title');
+
+		$.ajax({
+				type:	"POST",
+				url:	"__APP__/Public/getNews",
+				data:	"type=getNews&flag="+now_pubdate,
+				success:	function(msg){
+								if(msg != 2){
+									$("#mes").css({'display':'block'});	
+									$("#news").html(msg);
+									//$(".overlay").css({'display':'block',top:h,left:w}).animate({'opacity':'1'});
+								}
+								if(msg == 2){
+									$("#mes").css({'display':'none'});	
+								}
+						  }
+			});
+	}
+
+
+	var h = $(window).height()/3 - 30;
+	var w = $(window).width()/2 - 240;
+
+	$("#mes").floatdiv({top:h,right:"0"});
+
+	$("#mes").click(function(){
+		
+		$(".overlay").css({'display':'block',top:h,left:w}).animate({'opacity':'1'});
+
+	});
+	
+	$(".closed").click(function(){
+
+		$(".overlay").css({'display':'none'});
+		
+	});
+	
+});
+</script>
+<style>
+.overlay	{ width:550px;display:none; position:absolute; background-color:#fff; z-index:1000;}
+</style>
+<script src="__PUBLIC__/lib/jquery.floatDiv.js" type="text/javascript"></script>
+	<img id="mes" src="__PUBLIC__/images/mes_02.gif" style="cursor:pointer"/>
+		<div class="block span6 overlay">
+        	<div id='news'>
+            </div>
+            <a href="###" class="closed">点我关闭</a>
+        </div>
   </body>
 </html>
 

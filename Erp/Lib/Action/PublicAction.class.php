@@ -245,4 +245,32 @@ class PublicAction extends Action {
             $this->error('修改失败!');
         }
     }
+	
+	//	实时消息
+	public function getNews(){
+		//	我的消息
+		$Mes = D("Messages");
+		$m_where['roleid&kind'] =array(array("IN", $_SESSION['roleId']),"verify",'_multi'=>true);
+		$m_where['kind&uid'] =array("confirm",$_SESSION['authId'],'_multi'=>true);
+		$m_where['_logic'] = 'or';
+		$m_condition['_complex'] = $m_where;
+
+		$my_ver_count = $Mes->where($m_condition)->count();
+		$my_ver_pros = $Mes->where($m_condition)->order("`pubdate` desc")->limit(0,20)->select();
+		
+		$new_pros = $Mes->where($m_condition)->order("`pubdate` desc")->find();
+		
+		if(($this->_request('flag') > 0 && $this->_request('flag') >= $new_pros['pubdate']))	{
+			return false;
+		}
+		if(!$new_pros)	{
+			echo 2;
+			return;
+		}
+		$this->assign('my_ver_count', $my_ver_count);
+		$this->assign('my_ver_pros', $my_ver_pros);
+		
+		if($this->_request('type') == 'getNews')	$this->display();	
+		
+	}
 }
