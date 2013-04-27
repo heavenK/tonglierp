@@ -443,7 +443,7 @@ class CommonAction extends Action {
             $id = $_REQUEST [$pk];
             if (isset($id)) {
                 $condition = array($pk => array('in', explode(',', $id)));
-                if (false !== $model->where($condition)->delete()) {
+                if (false !== $model->relation(true)->where($condition)->delete()) {
                     $this->success('删除成功！');
                 } else {
                     $this->error('删除失败！');

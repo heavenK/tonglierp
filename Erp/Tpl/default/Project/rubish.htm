@@ -47,6 +47,7 @@
               <td><{$tenders.pubdate|date="Y-m-d",###}></td>
               <td>
                   <a href="__APP__/Project/resume/pid/<{$tenders.pid}>"><i class="icon-unlock"></i></a>
+                  <a href="javascript:if(confirm('确实要删除吗?'))location='__APP__/Project/foreverdelete/pid/<{$tenders.pid}>'"><i class="icon-remove"></i></a>
               </td>
             </tr>
         </volist>
