@@ -442,12 +442,21 @@ class CommonAction extends Action {
             $pk = $model->getPk();
             $id = $_REQUEST [$pk];
             if (isset($id)) {
-                $condition = array($pk => array('in', explode(',', $id)));
-                if (false !== $model->where($condition)->relation(true)->delete()) {
-                    $this->success('删除成功！');
-                } else {
-                    $this->error('删除失败！');
-                }
+				
+				if($name=="Project"){
+					if (false !== $model->relation(true)->delete($id)) {
+						$this->success('删除成功！');
+					} else {
+						$this->error('删除失败！');
+					}
+				}else{
+					$condition = array($pk => array('in', explode(',', $id)));
+					if (false !== $model->where($condition)->delete()) {
+						$this->success('删除成功！');
+					} else {
+						$this->error('删除失败！');
+					}
+				}
             } else {
                 $this->error('非法操作');
             }
