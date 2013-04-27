@@ -265,9 +265,9 @@ class PublicAction extends Action {
 			return;
 		}
 		
-		if(($this->_request('flag') > 0 && $this->_request('flag') >= $new_pros['pubdate']))	{
+/*		if(($this->_request('flag') > 0 && $this->_request('flag') >= $new_pros['pubdate']))	{
 			return false;
-		}
+		}*/
 		
 		$this->assign('my_ver_count', $my_ver_count);
 		$this->assign('my_ver_pros', $my_ver_pros);
