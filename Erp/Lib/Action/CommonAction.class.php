@@ -445,6 +445,14 @@ class CommonAction extends Action {
 
 				$condition = array($pk => array('in', explode(',', $id)));
 				if (false !== $model->relation(true)->where($condition)->delete()) {
+					
+					if($name=="Project"){
+						$Messages = D("Messages");
+						$condition_mes = array($pk => array('in', explode(',', $id)));
+						$Messages->where($condition_mes)->delete();
+					}
+					
+					
 					$this->success('删除成功！');
 				} else {
 					$this->error('删除失败！');
