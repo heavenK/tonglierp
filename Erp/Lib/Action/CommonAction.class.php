@@ -444,7 +444,7 @@ class CommonAction extends Action {
             if (isset($id)) {
 
 				$condition = array($pk => array('in', explode(',', $id)));
-				if (false !== $model->relation(true)->where($condition)->delete()) {
+				if (false !== $model->relation(true)->delete($id)) {
 					
 					if($name=="Project"){
 						$condition_info = array($pk => array('in', explode(',', $id)));

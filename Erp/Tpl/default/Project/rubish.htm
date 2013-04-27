@@ -27,6 +27,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th width="50">全选</th>
           <th width="200">项目编号</th>
           <th>名称</th>
           <th width="100">类型</th>
@@ -39,6 +40,7 @@
       <tbody>
       	<volist name="list" id="tenders">
         	<tr>
+              <td><input type="checkbox" name="pid" value="<{$tenders.pid}>" /></td>
               <td><{$tenders.sn}></td>
               <td><{$tenders.pname}></td>
               <td><{$tenders.type|getTypes}></td>
@@ -54,7 +56,20 @@
         
       </tbody>
     </table>
+    <button class="btn" type="button" onclick="subDel()">删除</button>
 </div>
+<script>
+function subDel(){
+	var str="";  
+	$("input[type='checkbox']:checked").each(function(){  
+	str+=$(this).val()+","; 
+	})  
+	
+	str = str.substr(0,str.length-1);
+
+	location='__APP__/Project/foreverdelete/pid/'+str;
+}
+</script>
 <div class="pagination">
     <{$page}>
 </div>
