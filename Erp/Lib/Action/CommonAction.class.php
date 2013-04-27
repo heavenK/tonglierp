@@ -409,7 +409,7 @@ class CommonAction extends Action {
 		if($name=="Project"){
 			$pro = $model->where("`pid` = ".$this->_request('pid'))->find();
 			
-			if($pro['status'] > 1) $this->error('此项目正在审核流程中，无法进行删除!');
+			if($pro['status'] > 1 && array_search(9, $_SESSION['roleId']) == FALSE) $this->error('此项目正在审核流程中，无法进行删除!');
 			if($pro['username'] != $_SESSION['loginUserName'] && array_search(9, $_SESSION['roleId']) == FALSE)	$this->error('您没有删除这个项目的权限！');
 		}
 		

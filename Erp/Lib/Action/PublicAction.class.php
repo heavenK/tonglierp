@@ -260,13 +260,15 @@ class PublicAction extends Action {
 		
 		$new_pros = $Mes->where($m_condition)->order("`pubdate` desc")->find();
 		
-		if(($this->_request('flag') > 0 && $this->_request('flag') >= $new_pros['pubdate']))	{
-			return false;
-		}
 		if(!$new_pros)	{
 			echo 2;
 			return;
 		}
+		
+		if(($this->_request('flag') > 0 && $this->_request('flag') >= $new_pros['pubdate']))	{
+			return false;
+		}
+		
 		$this->assign('my_ver_count', $my_ver_count);
 		$this->assign('my_ver_pros', $my_ver_pros);
 		
