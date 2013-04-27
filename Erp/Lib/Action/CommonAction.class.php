@@ -406,11 +406,11 @@ class CommonAction extends Action {
         $name = $this->getActionName();
         $model = M($name);
 		
-		if($name=="Project"){
+		if($name=="Project" && array_search(9, $_SESSION['roleId']) == FALSE && array_search(13, $_SESSION['roleId']) == FALSE  && array_search(14, $_SESSION['roleId']) == FALSE){
 			$pro = $model->where("`pid` = ".$this->_request('pid'))->find();
 			
-			if($pro['status'] > 1 && array_search(9, $_SESSION['roleId']) == FALSE) $this->error('此项目正在审核流程中，无法进行删除!');
-			if($pro['username'] != $_SESSION['loginUserName'] && array_search(9, $_SESSION['roleId']) == FALSE)	$this->error('您没有删除这个项目的权限！');
+			if($pro['status'] > 1) $this->error('此项目正在审核流程中，无法进行删除!');
+			if($pro['username'] != $_SESSION['loginUserName'])	$this->error('您没有删除这个项目的权限！');
 		}
 		
         if (!empty($model)) {
