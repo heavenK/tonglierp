@@ -262,10 +262,10 @@ class RelationModel extends Model {
                         if(!empty($mappingData) || $opType == 'DEL') {
 							
 							// add by HeavenK   verity mapping tables fileds
-							$mappingData = $model->create($mappingData);
+/*							$mappingData = $model->create($mappingData);
 							if (false === $mappingData) {
 								$this->error($model->getError());
-							}
+							}*/
 							// over
 							
                             switch($mappingType) {
