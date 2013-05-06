@@ -97,7 +97,7 @@ class TagLib {
             foreach($attrs as $name) {
                 if( isset($array[$name])) {
                     $array[$name] = str_replace('___','&',$array[$name]);
-                }elseif(false !== array_search($name,$must)){
+                }elseif(false !== in_array($name,$must)){
                     throw_exception(L('_PARAM_ERROR_').':'.$name);
                 }
             }

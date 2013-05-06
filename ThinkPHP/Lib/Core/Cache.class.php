@@ -101,7 +101,7 @@ class Cache {
             $value   =  array();
         }
         // 进列
-        if(false===array_search($key, $value))  array_push($value,$key);
+        if(false===in_array($key, $value))  array_push($value,$key);
         if(count($value) > $this->options['length']) {
             // 出列
             $key =  array_shift($value);

@@ -198,7 +198,7 @@ class Dispatcher {
                 define('MODULE_ALIAS',strtolower($module));
                 // 获取实际的模块名
                 return   $maps[MODULE_ALIAS];
-            }elseif(array_search(strtolower($module),$maps)){
+            }elseif(in_array(strtolower($module),$maps)){
                 // 禁止访问原始模块
                 return   '';
             }
@@ -229,7 +229,7 @@ class Dispatcher {
                     define('ACTION_ALIAS',strtolower($action));
                     // 获取实际的操作名
                     return   $maps[ACTION_ALIAS];
-                }elseif(array_search(strtolower($action),$maps)){
+                }elseif(in_array(strtolower($action),$maps)){
                     // 禁止访问原始操作
                     return   '';
                 }

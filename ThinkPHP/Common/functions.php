@@ -222,13 +222,13 @@ function U($url='',$vars='',$suffix=true,$redirect=false,$domain=false) {
             if($maps = C('URL_ACTION_MAP')) {
                 if(isset($maps[strtolower($var[C('VAR_MODULE')])])) {
                     $maps    =   $maps[strtolower($var[C('VAR_MODULE')])];
-                    if($action = array_search(strtolower($var[C('VAR_ACTION')]),$maps)){
+                    if($action = in_array(strtolower($var[C('VAR_ACTION')]),$maps)){
                         $var[C('VAR_ACTION')] = $action;
                     }
                 }
             }
             if($maps = C('URL_MODULE_MAP')) {
-                if($module = array_search(strtolower($var[C('VAR_MODULE')]),$maps)){
+                if($module = in_array(strtolower($var[C('VAR_MODULE')]),$maps)){
                     $var[C('VAR_MODULE')] = $module;
                 }
             }            
@@ -704,7 +704,7 @@ function get_client_ip($type = 0) {
     if ($ip !== NULL) return $ip[$type];
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         $arr    =   explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
-        $pos    =   array_search('unknown',$arr);
+        $pos    =   in_array('unknown',$arr);
         if(false !== $pos) unset($arr[$pos]);
         $ip     =   trim($arr[0]);
     }elseif (isset($_SERVER['HTTP_CLIENT_IP'])) {
