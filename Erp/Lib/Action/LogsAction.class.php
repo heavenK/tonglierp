@@ -13,7 +13,7 @@ class LogsAction extends CommonAction {
 		
 		$active = 1;
 		$need_role = $this->_post('need_role');
-		
+		dump($_SESSION['roleId']);
 		if($need_role == 7){
 			$project = $Project->where($p_data)->find();
 			if($project['username'] != $_SESSION['loginUserName'] && array_search(9, $_SESSION['roleId']) == FALSE)	$this->error('对不起，您没有这个权限！！');
