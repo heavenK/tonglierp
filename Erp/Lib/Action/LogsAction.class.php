@@ -13,15 +13,14 @@ class LogsAction extends CommonAction {
 		
 		$active = 1;
 		$need_role = $this->_post('need_role');
-		dump(array_search($need_role, $_SESSION['roleId']) == FALSE);
 		if($need_role == 7){
 			$project = $Project->where($p_data)->find();
-			if($project['username'] != $_SESSION['loginUserName'] && array_search(9, $_SESSION['roleId']) == FALSE)	$this->error('对不起，您没有这个权限！！');
+			if($project['username'] != $_SESSION['loginUserName'] && in_array(9, $_SESSION['roleId']) == FALSE)	$this->error('对不起，您没有这个权限！！');
 		}elseif($need_role == 8){
 			$project = $Project->where($p_data)->find();
-			if($project['principal'] != $_SESSION[C('USER_AUTH_KEY')] && array_search(9, $_SESSION['roleId']) == FALSE)	$this->error('对不起，您不是该项目负责人！！');
+			if($project['principal'] != $_SESSION[C('USER_AUTH_KEY')] && in_array(9, $_SESSION['roleId']) == FALSE)	$this->error('对不起，您不是该项目负责人！！');
 		}else{
-			if(array_search($need_role, $_SESSION['roleId']) == FALSE && array_search(9, $_SESSION['roleId']) == FALSE) $this->error('对不起，您没有这个权限！');
+			if(in_array($need_role, $_SESSION['roleId']) == FALSE && in_array(9, $_SESSION['roleId']) == FALSE) $this->error('对不起，您没有这个权限！');
 		}
 		$roleid = $need_role;
 		
