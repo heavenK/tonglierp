@@ -31,7 +31,7 @@
           <th width="130">项目编号</th>
           <th>名称</th>
           <th width="100">状态</th>
-          <th width="100">类型</th>
+          <!--<th width="100">类型</th>-->
           <th width="100">招标方式</th>
           <th width="100">发布时间</th>
           <th width="70">负责人</th>
@@ -45,7 +45,7 @@
               <td><{$tenders.sn}></td>
               <td><{$tenders.pname}></td>
               <td><{$tenders.status|getStatus}></td>
-              <td><{$tenders.type|getTypes}></td>
+              <!--<td><{$tenders.type|getTypes}></td>-->
               <td><{$tenders.tenders.way}></td>
               <td><{$tenders.pubdate|date="Y-m-d",###}></td>
               <td><{$tenders.principal|getNickname}></td>

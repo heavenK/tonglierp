@@ -26,7 +26,7 @@
           <th width="130">项目编号</th>
           <th>名称</th>
           <th width="100">状态</th>
-          <th width="100">类型</th>
+          <!--<th width="100">类型</th>-->
           <th width="100">委托方</th>
           <th width="100">委托时间</th>
           <th width="70">负责人</th>
@@ -40,7 +40,7 @@
               <td><{$cost.sn}></td>
               <td><a href="__APP__/Project/verify/type/<{$type}>/pid/<{$cost.pid}>/action/show"><{$cost.pname}></a></td>
               <td><{$cost.status|getStatus}></td>
-              <td><{$cost.type|getTypes}></td>
+              <!--<td><{$cost.type|getTypes}></td>-->
               <td><{$cost.cost.client}></td>
               <td><{$cost.cost.delegateTime|date="Y-m-d",###}></td>
               <td><{$cost.principal|getNickname}></td>
