@@ -96,7 +96,7 @@ hr {
   position: relative;
   min-height: 800px;
   background: #fff;
-  margin-left: 240px;
+  margin-left: 200px;
   border-left: 1px solid #cccccc;
   border-left: 3px solid #999999;
 }
@@ -278,7 +278,7 @@ a.block-heading:hover,
 }
 /*Navigation*/
 .sidebar-nav {
-  width: 240px;
+  width: 200px;
   position: absolute;
   float: left;
   border-top: none;
