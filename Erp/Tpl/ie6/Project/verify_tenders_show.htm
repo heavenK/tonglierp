@@ -119,7 +119,7 @@
         <label>项目名称：<{$vo.pname}></label>
         <label>招标方式：<{$vo.tenders.way}></label>
         <label>项目负责人：<{$vo.principal|getNickname}></label>
-        <label>项目编写人：<{$vo.tenders.copywriter}></label>
+        <label>项目编写人：<{$vo.tenders.copywriter|getNickname}></label>
     	<label>附件：<?php if($vo['attachment']) {?><a href="__UPLOAD__<{$vo.attachment}>">点击下载</a>--------<a target="_blank" href="__APP__/Public/wordTOpdf/pid/<{$vo.pid}>">转换成PDF版并下载</a><?php }?></label>
       </div>
     </div>
