@@ -52,9 +52,9 @@ class PublicAction extends Action {
         $map['account']	= $_POST['account'];
         $map["status"]	=	array('gt',0);
 		dump($_SESSION);
-        /*if(session('verify') != md5($_POST['verify'])) {
+        if(session('verify') != md5($_POST['verify'])) {
             $this->error('验证码错误！');
-        }*/
+        }
         import ( '@.ORG.Util.RBAC' );
         $authInfo = RBAC::authenticate($map);
         //使用用户名、密码和状态的方式进行认证
