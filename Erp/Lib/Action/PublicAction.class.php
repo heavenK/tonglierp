@@ -51,6 +51,8 @@ class PublicAction extends Action {
         // 支持使用绑定帐号登录
         $map['account']	= $_POST['account'];
         $map["status"]	=	array('gt',0);
+		dump($_POST['verify']);
+		dump(session('verify'));
         if(session('verify') != md5($_POST['verify'])) {
             $this->error('验证码错误！');
         }
